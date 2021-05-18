@@ -1,0 +1,14 @@
+name: valet-travis-languages-testing/go-example
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        go-version: 1.11.x
+    - run: go get -d ./...
+    - run: go test ./...
